@@ -1,8 +1,8 @@
 <body style="background-color: rgb(102, 102, 102)">
 
-    <h1 style="color: rgb(168, 0, 0); position: absolute; top: 1%; left: 10%; align-content: center; text-align: center;">Red</h1>
-    <h1 style="color: rgb(0, 168, 0); position: absolute; top: 1%; left: 30%; align-content: center; text-align: center;">Green</h1>
-    <h1 style="color: rgb(0, 0, 168); position: absolute; top: 1%; left: 50%; align-content: center; text-align: center;">Blue</h1>
+    <h1 id="RedTotal"; style="color: rgb(168, 0, 0); position: absolute; top: 1%; left: 10%; align-content: center; text-align: center;">Red: 0</h1>
+    <h1 id="GreenTotal"; style="color: rgb(0, 168, 0); position: absolute; top: 1%; left: 30%; align-content: center; text-align: center;">Green</h1>
+    <h1 id="BlueTotal"; style="color: rgb(0, 0, 168); position: absolute; top: 1%; left: 50%; align-content: center; text-align: center;">Blue</h1>
 
     <button id="Roll" style="position: fixed; bottom: 2%; right: 2%; width: 10%; height: 10%; font-family: cursive; font-size: 250%"; onclick=" Roll()">Roll</button>
 
@@ -102,5 +102,59 @@
     }
 
 
+
+    function Roll(){
+        document.getElementById("RedTotal").textContent = "Red: 0"
+        let RedT = 0
+        for (let i = 0; 43> i; i++){
+            let Subject = document.getElementById(`Red${i+1}`)
+            if (Subject.style.backgroundColor== `rgb(200, 0, 0)`){
+                Subject.textContent = Math.floor(Math.random()*10)
+                while (Subject.textContent>6){
+                    Subject.textContent = Math.floor(Math.random()*10)
+                }
+            }
+            RedT = RedT + Number(Subject.textContent)
+        }
+        if (RedT> 255){
+            RedT = 255
+        }
+        document.getElementById("RedTotal").textContent = `Red: ${RedT}`
+
+        document.getElementById("GreenTotal").textContent = "Green: 0"
+        let GreenT = 0
+        for (let i = 0; 43> i; i++){
+            let Subject = document.getElementById(`Green${i+1}`)
+            if (Subject.style.backgroundColor== `rgb(0, 200, 0)`){
+                Subject.textContent = Math.floor(Math.random()*10)
+                while (Subject.textContent>6){
+                    Subject.textContent = Math.floor(Math.random()*10)
+                }
+            }
+            GreenT = GreenT + Number(Subject.textContent)
+        }
+        if (GreenT> 255){
+            GreenT = 255
+        }
+        document.getElementById("GreenTotal").textContent = `Red: ${GreenT}`
+        
+        document.getElementById("BlueTotal").textContent = "Blue: 0"
+        let BlueT = 0
+        for (let i = 0; 43> i; i++){
+            let Subject = document.getElementById(`Blue${i+1}`)
+            if (Subject.style.backgroundColor== `rgb(0, 0, 200)`){
+                Subject.textContent = Math.floor(Math.random()*10)
+                while (Subject.textContent>6){
+                    Subject.textContent = Math.floor(Math.random()*10)
+                }
+            }
+            BlueT = BlueT + Number(Subject.textContent)
+        }
+        if (BlueT> 255){
+            BlueT = 255
+        }
+        document.getElementById("BlueTotal").textContent = `Blue: ${BlueT}`
+
+    }
 
 </script>
