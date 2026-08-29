@@ -1,0 +1,102 @@
+<body style="color: rgb(102, 102, 102)">
+
+    <h1 style="color: rgb(168, 0, 0); position: absolute; top: 1%; left: 10%; align-content: center; text-align: center;">Red</h1>
+    <h1 style="color: rgb(0, 168, 0); position: absolute; top: 1%; left: 30%; align-content: center; text-align: center;">Green</h1>
+    <h1 style="color: rgb(0, 0, 168); position: absolute; top: 1%; left: 50%; align-content: center; text-align: center;">Blue</h1>
+
+    <button id="Roll" style="position: fixed; bottom: 2%; right: 2%; width: 10%; height: 10%; font-family: cursive; font-size: 250%;"; onclick=" Roll()">Roll</button>
+
+
+</body>
+
+<script>
+
+    for (let i=0; 43>i; i++){
+        let newbutton = document.createElement("button");
+        newbutton.textContent="0";
+        newbutton.style.height = "7%";
+        newbutton.style.width = "10%";
+        newbutton.style.position = "absolute";
+        newbutton.style.top = `${i*8+8}%`;
+        newbutton.style.left = "10%";
+        newbutton.style.fontFamily = "cursive";
+        newbutton.style.fontSize = "225%";
+        newbutton.style.backgroundColor = `rgb(200,0,0)`;
+        newbutton.id = `Red${i+1}`;
+        
+        newbutton.onclick = function() {
+            RedClick(this);
+        };
+
+        document.body.appendChild(newbutton);
+    }
+
+    function RedClick(button){
+        if (button.style.backgroundColor = `rgb(200,0,0`){
+            button.style.backgroundColor = `rgb(100,0,0)`
+        } else {
+            button.style.backgroundColor = `rgb(200,0,0`
+        }
+    }
+
+    for (let i=0; 43>i; i++){
+        let newbutton = document.createElement("button");
+        newbutton.textContent="0";
+        newbutton.hidden=false;
+        newbutton.style.height = "7%";
+        newbutton.style.width = "10%";
+        newbutton.style.position = "absolute";
+        newbutton.style.top = `${i*8+8}%`;
+        newbutton.style.left = "30%";
+        newbutton.style.fontFamily = "cursive";
+        newbutton.style.fontSize = "225%";
+        newbutton.style.backgroundColor = `rgb(0,200,0)`;
+        newbutton.id = `Green${i+1}`;
+        
+        newbutton.onclick = function() {
+            GreenClick(this);
+        };
+
+        document.body.appendChild(newbutton);
+    }
+
+    function GreenClick(button){
+        if (button.style.backgroundColor = `rgb(0,200,0`){
+            button.style.backgroundColor = `rgb(0,100,0)`
+        } else {
+            button.style.backgroundColor = `rgb(0,200,0`
+        }
+    }
+
+        for (let i=0; 43>i; i++){
+        let newbutton = document.createElement("button");
+        newbutton.textContent="0";
+        newbutton.hidden=false;
+        newbutton.style.height = "7%";
+        newbutton.style.width = "10%";
+        newbutton.style.position = "absolute";
+        newbutton.style.top = `${i*8+8}%`;
+        newbutton.style.left = "50%";
+        newbutton.style.fontFamily = "cursive";
+        newbutton.style.fontSize = "225%";
+        newbutton.style.backgroundColor = `rgb(0,0,200)`;
+        newbutton.id = `Blue${i+1}`;
+        
+        newbutton.onclick = function() {
+            BlueClick(this);
+        };
+
+        document.body.appendChild(newbutton);
+    }
+
+    function BlueClick(button){
+        if (button.style.backgroundColor = `rgb(0,0,200)`){
+            button.style.backgroundColor = `rgb(0,0,100)`
+        } else {
+            button.style.backgroundColor = `rgb(0,0,200)`
+        }
+    }
+
+
+
+</script>
