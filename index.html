@@ -1,10 +1,10 @@
-<body style="color: rgb(102, 102, 102)">
+<body style="background-color: rgb(102, 102, 102)">
 
     <h1 style="color: rgb(168, 0, 0); position: absolute; top: 1%; left: 10%; align-content: center; text-align: center;">Red</h1>
     <h1 style="color: rgb(0, 168, 0); position: absolute; top: 1%; left: 30%; align-content: center; text-align: center;">Green</h1>
     <h1 style="color: rgb(0, 0, 168); position: absolute; top: 1%; left: 50%; align-content: center; text-align: center;">Blue</h1>
 
-    <button id="Roll" style="position: fixed; bottom: 2%; right: 2%; width: 10%; height: 10%; font-family: cursive; font-size: 250%;"; onclick=" Roll()">Roll</button>
+    <button id="Roll" style="position: fixed; bottom: 2%; right: 2%; width: 10%; height: 10%; font-family: cursive; font-size: 250%"; onclick=" Roll()">Roll</button>
 
 
 </body>
@@ -32,10 +32,11 @@
     }
 
     function RedClick(button){
-        if (button.style.backgroundColor = `rgb(200,0,0`){
-            button.style.backgroundColor = `rgb(100,0,0)`
-        } else {
-            button.style.backgroundColor = `rgb(200,0,0`
+        if (button.style.backgroundColor == `rgb(200, 0, 0)`){
+            button.style.backgroundColor = `rgb(100, 0, 0)`
+        }
+        else if (button.style.backgroundColor == `rgb(100, 0, 0)`) {
+            button.style.backgroundColor = `rgb(200, 0, 0)`
         }
     }
 
@@ -61,10 +62,11 @@
     }
 
     function GreenClick(button){
-        if (button.style.backgroundColor = `rgb(0,200,0`){
-            button.style.backgroundColor = `rgb(0,100,0)`
-        } else {
-            button.style.backgroundColor = `rgb(0,200,0`
+        if (button.style.backgroundColor == `rgb(0, 200, 0)`){
+            button.style.backgroundColor = `rgb(0, 100, 0)`
+        } 
+        else if (button.style.backgroundColor == `rgb(0, 100, 0)`) {
+            button.style.backgroundColor = `rgb(0 ,200, 0)`
         }
     }
 
@@ -90,10 +92,12 @@
     }
 
     function BlueClick(button){
-        if (button.style.backgroundColor = `rgb(0,0,200)`){
-            button.style.backgroundColor = `rgb(0,0,100)`
-        } else {
-            button.style.backgroundColor = `rgb(0,0,200)`
+
+        if (button.style.backgroundColor == `rgb(0, 0, 200)`){
+            button.style.backgroundColor = `rgb(0, 0, 100)`
+        } 
+        else if (button.style.backgroundColor == `rgb(0, 0, 100)`) {
+            button.style.backgroundColor = `rgb(0, 0, 200)`
         }
     }
 
