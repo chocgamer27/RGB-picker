@@ -5,6 +5,7 @@
     <h1 id="BlueTotal"; style="color: rgb(0, 0, 168); position: absolute; top: 1%; left: 50%; align-content: center; text-align: center;">Blue: 0</h1>
 
     <button id="Roll" style="position: fixed; bottom: 2%; right: 2%; width: 10%; height: 10%; font-family: cursive; font-size: 250%; border-radius: 20px;"; onclick=" Roll()">Roll</button>
+    <button id="HardMode" style="position: fixed; bottom: 2%; right: 14%; width: 10%; height: 10%; font-family: cursive; font-size: 250%; border-radius: 20px;"; onclick=" HardMode()">Hard mode</button>
 
     <button id="RgbC" style="position: fixed; bottom: 15%; right: 2%; width: 35%; height: 10%; font-family: cursive; font-size: 300%; align-content: center; text-align: center; border-radius: 20px;"; onclick=" Copy()">Click Roll to start!</button>
     <h1 style="position: absolute; bottom: 30%; right: 10%; width: 15%; font-size: 150%;">Quick Tip! Click the RGB value to copy it to clipboard!</h1>
@@ -15,6 +16,8 @@
 </body>
 
 <script>
+
+    let hard = false
 
     function CreateColumn(Colour, Offset, Name){
         for (let i=0; 43>i; i++){
@@ -44,6 +47,12 @@
     CreateColumn("0, 200, 0", 30, "Green")
     CreateColumn("0, 0, 200", 50, "Blue")
 
+    function HardMode(btn) {
+        console.log("hi")
+        hard = true
+        document.getElementById("HardMode").disabled = true;
+    }
+
     function Click(btn){
         btn.locked = !btn.locked
 
@@ -51,6 +60,9 @@
     }
 
     function Roll(){
+        if (document.getElementById("HardMode")) {
+            document.getElementById("HardMode").remove()
+        }
         let brightness = 0;
         function URolls(ColourName){
             document.getElementById(`${ColourName}Total`).textContent = `${ColourName}: 0`
@@ -73,15 +85,24 @@
         }
 
         let colour = `rgb(${URolls("Red")}, ${URolls("Green")}, ${URolls("Blue")})`
+        if (!hard) {
+            document.getElementById("RgbC").textContent = colour
+        } else {
+            document.getElementById("RgbC").textContent = "Can't see in hard mode"
+        }
         document.getElementById("RgbC").style.backgroundColor = colour
-        document.getElementById("RgbC").textContent = colour
+        
 
         if ((brightness/1000)>128){document.getElementById("RgbC").style.color="black"} else {document.getElementById("RgbC").style.color="white"};
 
     }
     function Copy(){
         if (document.getElementById("RgbC").textContent != "Click Roll to start!"){
-            navigator.clipboard.writeText(document.getElementById("RgbC").textContent)
+            if (hard) {
+                document.getElementById("RgbC").textContent = "Can't copy in hard mode"
+            } else {
+                navigator.clipboard.writeText(document.getElementById("RgbC").textContent)
+            }
         }
     }
 
