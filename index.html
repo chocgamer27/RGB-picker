@@ -13,100 +13,51 @@
 
 <script>
 
-    for (let i=0; 43>i; i++){
-        let newbutton = document.createElement("button");
-        newbutton.textContent="0";
-        newbutton.style.height = "7%";
-        newbutton.style.width = "10%";
-        newbutton.style.position = "absolute";
-        newbutton.style.top = `${i*8+8}%`;
-        newbutton.style.left = "10%";
-        newbutton.style.fontFamily = "cursive";
-        newbutton.style.fontSize = "225%";
-        newbutton.style.backgroundColor = `rgb(200,0,0)`;
-        newbutton.style.borderRadius = "15px"
-        newbutton.id = `Red${i+1}`;
-        
-        newbutton.onclick = function() {
-            RedClick(this);
-        };
-
-        document.body.appendChild(newbutton);
-    }
-
-    function RedClick(button){
-        if (button.style.backgroundColor == `rgb(200, 0, 0)`){
-            button.style.backgroundColor = `rgb(100, 0, 0)`
-        }
-        else if (button.style.backgroundColor == `rgb(100, 0, 0)`) {
-            button.style.backgroundColor = `rgb(200, 0, 0)`
-        }
-    }
-
-    for (let i=0; 43>i; i++){
-        let newbutton = document.createElement("button");
-        newbutton.textContent="0";
-        newbutton.hidden=false;
-        newbutton.style.height = "7%";
-        newbutton.style.width = "10%";
-        newbutton.style.position = "absolute";
-        newbutton.style.top = `${i*8+8}%`;
-        newbutton.style.left = "30%";
-        newbutton.style.fontFamily = "cursive";
-        newbutton.style.fontSize = "225%";
-        newbutton.style.backgroundColor = `rgb(0,200,0)`;
-        newbutton.style.borderRadius = "15px"
-        newbutton.id = `Green${i+1}`;
-        
-        newbutton.onclick = function() {
-            GreenClick(this);
-        };
-
-        document.body.appendChild(newbutton);
-    }
-
-    function GreenClick(button){
-        if (button.style.backgroundColor == `rgb(0, 200, 0)`){
-            button.style.backgroundColor = `rgb(0, 100, 0)`
-        } 
-        else if (button.style.backgroundColor == `rgb(0, 100, 0)`) {
-            button.style.backgroundColor = `rgb(0 ,200, 0)`
-        }
-    }
-
+    function CreateColumn(Colour, Offset, Name){
         for (let i=0; 43>i; i++){
-        let newbutton = document.createElement("button");
-        newbutton.textContent="0";
-        newbutton.hidden=false;
-        newbutton.style.height = "7%";
-        newbutton.style.width = "10%";
-        newbutton.style.position = "absolute";
-        newbutton.style.top = `${i*8+8}%`;
-        newbutton.style.left = "50%";
-        newbutton.style.fontFamily = "cursive";
-        newbutton.style.fontSize = "225%";
-        newbutton.style.backgroundColor = `rgb(0,0,200)`;
-        newbutton.style.borderRadius = "15px"
-        newbutton.id = `Blue${i+1}`;
-        
-        newbutton.onclick = function() {
-            BlueClick(this);
-        };
+            let newbutton = document.createElement("button");
+            newbutton.textContent="0";
+            newbutton.style = `
+            height: 7%;
+            width: 10%;
+            position: absolute;
+            top: ${i*8+8}%;
+            left: ${Offset}%;
+            font-Family: cursive;
+            font-Size: 225%;
+            background-Color: rgb(${Colour});
+            Color: rgb(255,255,255);
+            border-Radius: 15px`
+            newbutton.id = `${Name+i+1}`;
 
-        document.body.appendChild(newbutton);
-    }
-
-    function BlueClick(button){
-
-        if (button.style.backgroundColor == `rgb(0, 0, 200)`){
-            button.style.backgroundColor = `rgb(0, 0, 100)`
-        } 
-        else if (button.style.backgroundColor == `rgb(0, 0, 100)`) {
-            button.style.backgroundColor = `rgb(0, 0, 200)`
+            newbutton.onclick = function() {
+                Click(this);
+            };
+            document.body.appendChild(newbutton);
         }
     }
 
+    CreateColumn("200, 0, 0", 10, "Red")
+    CreateColumn("0, 200, 0", 30, "Green")
+    CreateColumn("0, 0, 200", 50, "Blue")
 
+    function Click(btn){
+        if (btn.style.backgroundColor == "rgb(200, 0, 0)"){
+            btn.style.backgroundColor = "rgb(100, 0, 0)"
+        } else if (btn.style.backgroundColor == "rgb(100, 0, 0)"){
+            btn.style.backgroundColor = "rgb(200, 0, 0)"
+        }
+        if (btn.style.backgroundColor == "rgb(0, 200, 0)"){
+            btn.style.backgroundColor = "rgb(0, 100, 0)"
+        } else if (btn.style.backgroundColor == "rgb(0, 100, 0)"){
+            btn.style.backgroundColor = "rgb(0, 200, 0)"
+        }
+        if (btn.style.backgroundColor == "rgb(0, 0, 200)"){
+            btn.style.backgroundColor = "rgb(0, 0, 100)"
+        } else if (btn.style.backgroundColor == "rgb(0, 0, 100)"){
+            btn.style.backgroundColor = "rgb(0, 0, 200)"
+        }
+    }
 
     function Roll(){
         document.getElementById("RedTotal").textContent = "Red: 0"
