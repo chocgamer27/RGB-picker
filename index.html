@@ -28,7 +28,7 @@
             background-Color: rgb(${Colour});
             Color: rgb(255,255,255);
             border-Radius: 15px`
-            newbutton.id = `${Name+i+1}`;
+            newbutton.id = `${Name+(Number(i)+1)}`;
 
             newbutton.onclick = function() {
                 Click(this);
@@ -42,47 +42,39 @@
     CreateColumn("0, 0, 200", 50, "Blue")
 
     function Click(btn){
-        if (btn.style.backgroundColor == "rgb(200, 0, 0)"){
-            btn.style.backgroundColor = "rgb(100, 0, 0)"
-        } else if (btn.style.backgroundColor == "rgb(100, 0, 0)"){
-            btn.style.backgroundColor = "rgb(200, 0, 0)"
-        }
-        if (btn.style.backgroundColor == "rgb(0, 200, 0)"){
-            btn.style.backgroundColor = "rgb(0, 100, 0)"
-        } else if (btn.style.backgroundColor == "rgb(0, 100, 0)"){
-            btn.style.backgroundColor = "rgb(0, 200, 0)"
-        }
-        if (btn.style.backgroundColor == "rgb(0, 0, 200)"){
-            btn.style.backgroundColor = "rgb(0, 0, 100)"
-        } else if (btn.style.backgroundColor == "rgb(0, 0, 100)"){
-            btn.style.backgroundColor = "rgb(0, 0, 200)"
+        btn.locked = !btn.locked
+
+        if (btn.locked){
+            btn.style.opacity = "0.2";
+        } else {
+            btn.style.opacity = "1";
         }
     }
 
     function Roll(){
 
-        function URolls(ColourName, RgbVal){
+        function URolls(ColourName){
             document.getElementById(`${ColourName}Total`).textContent = `${ColourName}: 0`
-            let T = 0
+            let T = 0;
             for (let i = 0; 43 > i; i++){
-                let Subject = document.getElementById(`${ColourName+i+1}`)
-                if (Subject.style.backgroundColor == `rgb(${RgbVal})`){
-                    Subject.textContent = Math.floor(Math.random()*10)
+                let Subject = document.getElementById(`${ColourName+(Number(i)+1)}`);
+                if (!Subject.locked){
+                    Subject.textContent = Math.floor(Math.random()*10);
                     while (Subject.textContent>6){
-                        Subject.textContent = Math.floor(Math.random()*10)
+                        Subject.textContent = Math.floor(Math.random()*10);
                     }
                 }
-                T = T + Number(Subject.textContent)
-            }
-            if (T>255){
-                T=255
-            }
-            document.getElementById(`${ColourName}Total`).textContent = `${ColourName}: ${T}`
+                T = T + Number(Subject.textContent);
+            };
+            if (T>255){T=255};
+
+            document.getElementById(`${ColourName}Total`).textContent = `${ColourName}: ${T}`;
+            return(T);
         }
 
-        URolls("Red", "200, 0, 0")
-        URolls("Green", "0, 200, 0")
-        URolls("Blue", "0, 0, 200")
+        document.getElementById("RgbC").textContent = `rgb(${URolls("Red")}`
+        document.getElementById("RgbC").textContent += `, ${URolls("Green")}`
+        document.getElementById("RgbC").textContent += `, ${URolls("Blue")})`
 
     }
     function Copy(){
