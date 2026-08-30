@@ -44,15 +44,11 @@
     function Click(btn){
         btn.locked = !btn.locked
 
-        if (btn.locked){
-            btn.style.opacity = "0.2";
-        } else {
-            btn.style.opacity = "1";
-        }
+        if (btn.locked){btn.style.opacity = "0.2";} else {btn.style.opacity = "1";}
     }
 
     function Roll(){
-
+        let brightness = 0;
         function URolls(ColourName){
             document.getElementById(`${ColourName}Total`).textContent = `${ColourName}: 0`
             let T = 0;
@@ -67,6 +63,7 @@
                 T = T + Number(Subject.textContent);
             };
             if (T>255){T=255};
+            if (ColourName = "Red"){brightness+=T*299} else if (ColourName = "Green"){brightness+=T*587} else {brightness+=T*114}
 
             document.getElementById(`${ColourName}Total`).textContent = `${ColourName}: ${T}`;
             return(T);
@@ -75,6 +72,8 @@
         document.getElementById("RgbC").textContent = `rgb(${URolls("Red")}`
         document.getElementById("RgbC").textContent += `, ${URolls("Green")}`
         document.getElementById("RgbC").textContent += `, ${URolls("Blue")})`
+
+        if ((brightness/1000)>128){document.getElementById("RgbC").style.color="black"} else {document.getElementById("RgbC").style.color="white"};
 
     }
     function Copy(){
