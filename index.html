@@ -6,6 +6,7 @@
 
     <button id="Roll" style="position: fixed; bottom: 2%; right: 2%; width: 10%; height: 10%; font-family: cursive; font-size: 250%"; onclick=" Roll()">Roll</button>
 
+    <div id="RgbC" style="position: fixed; bottom: 30%; right: 2%; width: 35%; height: 10%; font-family: cursive; font-size: 200%; align-content: center; text-align: center;">Click Roll to start!</div>
 
 </body>
 
@@ -154,6 +155,9 @@
             BlueT = 255
         }
         document.getElementById("BlueTotal").textContent = `Blue: ${BlueT}`
+        document.getElementById("RgbC").textContent = `Rgb(${RedT}, ${GreenT}, ${BlueT})`
+        document.getElementById("RgbC").style.backgroundColor = `Rgb(${RedT}, ${GreenT}, ${BlueT})`
+        document.getElementById("RgbC").style.color = `Rgb(${255-RedT}, ${255-GreenT}, ${255-BlueT})`
 
     }
 
