@@ -60,66 +60,31 @@
     }
 
     function Roll(){
-        document.getElementById("RedTotal").textContent = "Red: 0"
-        let RedT = 0
-        for (let i = 0; 43> i; i++){
-            let Subject = document.getElementById(`Red${i+1}`)
-            if (Subject.style.backgroundColor== `rgb(200, 0, 0)`){
-                Subject.textContent = Math.floor(Math.random()*10)
-                while (Subject.textContent>6){
-                    Subject.textContent = Math.floor(Math.random()*10)
-                }
-            }
-            RedT = RedT + Number(Subject.textContent)
-        }
-        if (RedT> 255){
-            RedT = 255
-        }
-        document.getElementById("RedTotal").textContent = `Red: ${RedT}`
 
-        document.getElementById("GreenTotal").textContent = "Green: 0"
-        let GreenT = 0
-        for (let i = 0; 43> i; i++){
-            let Subject = document.getElementById(`Green${i+1}`)
-            if (Subject.style.backgroundColor== `rgb(0, 200, 0)`){
-                Subject.textContent = Math.floor(Math.random()*10)
-                while (Subject.textContent>6){
+        function URolls(ColourName, RgbVal){
+            document.getElementById(`${ColourName}Total`).textContent = `${ColourName}: 0`
+            let T = 0
+            for (let i = 0; 43 > i; i++){
+                let Subject = document.getElementById(`${ColourName+i+1}`)
+                if (Subject.style.backgroundColor == `rgb(${RgbVal})`){
                     Subject.textContent = Math.floor(Math.random()*10)
+                    while (Subject.textContent>6){
+                        Subject.textContent = Math.floor(Math.random()*10)
+                    }
                 }
+                T = T + Number(Subject.textContent)
             }
-            GreenT = GreenT + Number(Subject.textContent)
-        }
-        if (GreenT> 255){
-            GreenT = 255
-        }
-        document.getElementById("GreenTotal").textContent = `Red: ${GreenT}`
-        
-        document.getElementById("BlueTotal").textContent = "Blue: 0"
-        let BlueT = 0
-        for (let i = 0; 43> i; i++){
-            let Subject = document.getElementById(`Blue${i+1}`)
-            if (Subject.style.backgroundColor== `rgb(0, 0, 200)`){
-                Subject.textContent = Math.floor(Math.random()*10)
-                while (Subject.textContent>6){
-                    Subject.textContent = Math.floor(Math.random()*10)
-                }
+            if (T>255){
+                T=255
             }
-            BlueT = BlueT + Number(Subject.textContent)
+            document.getElementById(`${ColourName}Total`).textContent = `${ColourName}: ${T}`
         }
-        if (BlueT> 255){
-            BlueT = 255
-        }
-        document.getElementById("BlueTotal").textContent = `Blue: ${BlueT}`
-        document.getElementById("RgbC").textContent = `Rgb(${RedT}, ${GreenT}, ${BlueT})`
-        document.getElementById("RgbC").style.backgroundColor = `Rgb(${RedT}, ${GreenT}, ${BlueT})`
-        if ((RedT*299 + GreenT*587 + BlueT*114)/1000 > 128){
-            document.getElementById("RgbC").style.color = "black";
-        } else {
-            document.getElementById("RgbC").style.color = "white";
-        }
+
+        URolls("Red", "200, 0, 0")
+        URolls("Green", "0, 200, 0")
+        URolls("Blue", "0, 0, 200")
 
     }
-
     function Copy(){
         if (document.getElementById("RgbC").textContent != "Click Roll to start!"){
             navigator.clipboard.writeText(document.getElementById("RgbC").textContent)
