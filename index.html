@@ -9,6 +9,9 @@
     <button id="RgbC" style="position: fixed; bottom: 15%; right: 2%; width: 35%; height: 10%; font-family: cursive; font-size: 300%; align-content: center; text-align: center; border-radius: 20px;"; onclick=" Copy()">Click Roll to start!</button>
     <h1 style="position: absolute; bottom: 30%; right: 10%; width: 15%; font-size: 150%;">Quick Tip! Click the RGB value to copy it to clipboard!</h1>
     <h1 style="position: absolute; bottom: 50%; right: 10%; width: 15%; font-size: 150%;">Quick Tip! Click on a coloured box to lock in its value!</h1>
+
+    <a href="https://github.com/chocgamer27/RGB-picker"; style="position: absolute; top: 5%; right: 5%; width: 24%; height: 14%; font-size: 250%; color: rgb(238, 142, 241); background-color: rgb(109, 14, 172); border-radius: 20px; align-content: center; text-align: center;">Go to github Project/Repo!</a>
+
 </body>
 
 <script>
@@ -63,15 +66,15 @@
                 T = T + Number(Subject.textContent);
             };
             if (T>255){T=255};
-            if (ColourName = "Red"){brightness+=T*299} else if (ColourName = "Green"){brightness+=T*587} else {brightness+=T*114}
+            if (ColourName == "Red"){brightness+=T*299} else if (ColourName == "Green"){brightness+=T*587} else {brightness+=T*114}
 
             document.getElementById(`${ColourName}Total`).textContent = `${ColourName}: ${T}`;
             return(T);
         }
 
-        document.getElementById("RgbC").textContent = `rgb(${URolls("Red")}`
-        document.getElementById("RgbC").textContent += `, ${URolls("Green")}`
-        document.getElementById("RgbC").textContent += `, ${URolls("Blue")})`
+        let colour = `rgb(${URolls("Red")}, ${URolls("Green")}, ${URolls("Blue")})`
+        document.getElementById("RgbC").style.backgroundColor = colour
+        document.getElementById("RgbC").textContent = colour
 
         if ((brightness/1000)>128){document.getElementById("RgbC").style.color="black"} else {document.getElementById("RgbC").style.color="white"};
 
