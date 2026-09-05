@@ -15,6 +15,11 @@ on the bottom right there is a piece text showing the background as the rolled r
 The colour of the text is based off of the background colour so if the background colour is quite dark then the text is white and if the background is bright then the text is dark.
 If you click on the (button) that shows the rgb value it will copy "rgb(R, G, B)" R,G,B being their respective column values.
 
+How you'd get the values you'd want is say you want a low red-ish colour,
+you'd roll and lock all the red ones you want to be a low number like 0 or 1 
+or if you'd want a quite a red-ish colour you'd lock them at a high number like 5 or 6
+and just do that for all the colour columns and you can see the rgb colour at the "rgb(R, G, B,)" text thing's background
+
 ## CREDITS (Stuff I didnt make/Hard mode)
 ### Hard mode was made by math0171512,
 
